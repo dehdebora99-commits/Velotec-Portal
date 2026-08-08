@@ -1,57 +1,345 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Velotec</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#eef6fa,#f8fbfd);color:#1f2937}
-header{background:linear-gradient(135deg,#1f5f78,#4a9ab8);color:#fff;text-align:center;padding:54px 20px 46px;box-shadow:0 8px 24px rgba(31,95,120,.22)}
-.logo{width:72px;height:72px;margin:0 auto 16px;border-radius:20px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;font-size:38px;border:1px solid rgba(255,255,255,.24)}
-header h1{margin:0;font-size:38px}
-header p{margin:12px auto 0;max-width:680px;font-size:17px;line-height:1.5;opacity:.96}
-main{max-width:980px;margin:34px auto;padding:0 18px 46px}
-.intro{text-align:center;margin-bottom:26px}
-.intro h2{margin:0 0 8px;color:#1f5f78;font-size:26px}
-.intro p{margin:0;color:#64748b}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.card{background:#fff;border-radius:20px;padding:28px;box-shadow:0 8px 24px rgba(31,95,120,.11);border:1px solid #dbeaf0;text-decoration:none;color:inherit;transition:.18s;display:flex;flex-direction:column;min-height:270px}
-.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(31,95,120,.16);border-color:#9fc8d8}
-.card-icon{width:60px;height:60px;border-radius:16px;background:#e8f3f7;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:18px}
-.card h3{margin:0 0 10px;color:#1f5f78;font-size:23px}
-.card p{margin:0;line-height:1.55;color:#566474;flex:1}
-.button{margin-top:24px;background:#1f5f78;color:#fff;border-radius:12px;padding:13px 16px;text-align:center;font-weight:700}
-footer{text-align:center;color:#6b7b88;font-size:13px;padding:8px 20px 28px}
-@media(max-width:720px){.grid{grid-template-columns:1fr}header h1{font-size:31px}.card{min-height:auto}}
-</style>
-</head>
-<body>
-<header>
-<div class="logo">✨</div>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Velotec | Portal Educacional</title><style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:#f5f8fa;
+    color:#172b3a;
+}
+
+/* ===== TOPO ===== */
+
+header{
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 85% 20%,rgba(255,255,255,.15),transparent 28%),
+        radial-gradient(circle at 10% 90%,rgba(255,255,255,.08),transparent 30%),
+        linear-gradient(135deg,#164e63,#217895 55%,#4a9db8);
+    color:white;
+    padding:62px 20px 72px;
+    text-align:center;
+}
+
+header::before,
+header::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.06);
+}
+
+header::before{
+    width:300px;
+    height:300px;
+    right:-100px;
+    top:-150px;
+}
+
+header::after{
+    width:220px;
+    height:220px;
+    left:-90px;
+    bottom:-130px;
+}
+
+.logo{
+    position:relative;
+    z-index:1;
+    width:78px;
+    height:78px;
+    margin:0 auto 20px;
+    border-radius:23px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:36px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25);
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+    backdrop-filter:blur(8px);
+}
+
+header h1{
+    position:relative;
+    z-index:1;
+    font-size:44px;
+    letter-spacing:-1px;
+    font-weight:800;
+}
+
+header p{
+    position:relative;
+    z-index:1;
+    max-width:650px;
+    margin:13px auto 0;
+    font-size:17px;
+    line-height:1.6;
+    color:rgba(255,255,255,.92);
+}
+
+/* ===== CONTEÚDO ===== */
+
+main{
+    max-width:1050px;
+    margin:-30px auto 0;
+    padding:0 20px 55px;
+    position:relative;
+    z-index:2;
+}
+
+.intro{
+    background:white;
+    border:1px solid #e3edf1;
+    border-radius:22px;
+    padding:28px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(20,70,90,.08);
+    margin-bottom:28px;
+}
+
+.intro h2{
+    color:#174f65;
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.intro p{
+    color:#71808c;
+    font-size:15px;
+}
+
+/* ===== CARDS ===== */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    background:white;
+    border:1px solid #e1ebef;
+    border-radius:24px;
+    padding:30px;
+    text-decoration:none;
+    color:inherit;
+    display:flex;
+    flex-direction:column;
+    min-height:310px;
+    box-shadow:0 8px 25px rgba(22,78,99,.07);
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg,#1b617c,#55a8c3);
+    opacity:.9;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 18px 40px rgba(22,78,99,.14);
+    border-color:#b8d6e0;
+}
+
+.card-icon{
+    width:66px;
+    height:66px;
+    border-radius:19px;
+    background:linear-gradient(135deg,#e7f3f7,#f1f8fa);
+    border:1px solid #d6e9ef;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:31px;
+    margin-bottom:22px;
+}
+
+.card h3{
+    color:#174f65;
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#647481;
+    line-height:1.65;
+    font-size:15px;
+    flex:1;
+}
+
+/* ===== BOTÃO ===== */
+
+.button{
+    margin-top:25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:#174f65;
+    color:white;
+    border-radius:13px;
+    padding:14px 18px;
+    font-size:14px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.card:hover .button{
+    background:#217895;
+}
+
+.button::after{
+    content:"→";
+    font-size:17px;
+    transition:.2s;
+}
+
+.card:hover .button::after{
+    transform:translateX(4px);
+}
+
+/* ===== RODAPÉ ===== */
+
+footer{
+    text-align:center;
+    color:#81909a;
+    font-size:13px;
+    padding:0 20px 30px;
+}
+
+.footer-name{
+    color:#174f65;
+    font-weight:700;
+}
+
+/* ===== CELULAR ===== */
+
+@media(max-width:720px){
+
+    header{
+        padding:48px 20px 65px;
+    }
+
+    header h1{
+        font-size:34px;
+    }
+
+    header p{
+        font-size:15px;
+    }
+
+    main{
+        margin-top:-25px;
+        padding-left:15px;
+        padding-right:15px;
+    }
+
+    .intro{
+        padding:23px 18px;
+    }
+
+    .intro h2{
+        font-size:22px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .card{
+        min-height:auto;
+        padding:25px;
+    }
+}
+</style></head><body><header><div class="logo">✦</div>
+
 <h1>Velotec</h1>
-<p>Tecnologia inteligente para apoiar a elaboração de relatórios e estratégias pedagógicas.</p>
-</header>
-<main>
-<section class="intro">
-<h2>Escolha o módulo</h2>
-<p>Cada ferramenta abre separadamente, sem alterar os sistemas já existentes.</p>
+
+<p>
+    Tecnologia inteligente para apoiar profissionais
+    na elaboração de relatórios e estratégias pedagógicas.
+</p>
+
+</header><main><section class="intro">
+
+    <h2>Portal de ferramentas</h2>
+
+    <p>
+        Escolha uma das soluções abaixo para começar.
+    </p>
+
 </section>
+
 <section class="grid">
-<a class="card" href="https://dehdebora99-commits.github.io/Veloso-Assistent/">
-<div class="card-icon">📝</div>
-<h3>Relatórios Pedagógicos</h3>
-<p>Gerar relatórios com escrita profissional, humanizada e organizada.</p>
-<div class="button">Abrir Veloso Assist</div>
-</a>
-<a class="card" href="https://dehdebora99-commits.github.io/Velotec/">
-<div class="card-icon">💡</div>
-<h3>Estratégias Pedagógicas</h3>
-<p>Criar estratégias curtas e objetivas a partir dos objetivos do Portage.</p>
-<div class="button">Abrir Velotec Estratégias</div>
-</a>
+
+    <a
+        class="card"
+        href="https://dehdebora99-commits.github.io/Veloso-Assistent/"
+    >
+
+        <div class="card-icon">📝</div>
+
+        <h3>Relatórios Pedagógicos</h3>
+
+        <p>
+            Gere relatórios com escrita profissional,
+            humanizada e organizada, facilitando o registro
+            e a documentação do trabalho pedagógico.
+        </p>
+
+        <div class="button">
+            Abrir Veloso Assist
+        </div>
+
+    </a>
+
+
+    <a
+        class="card"
+        href="https://dehdebora99-commits.github.io/Velotec/"
+    >
+
+        <div class="card-icon">💡</div>
+
+        <h3>Estratégias Pedagógicas</h3>
+
+        <p>
+            Crie estratégias curtas e objetivas a partir
+            dos objetivos do Portage, auxiliando no
+            planejamento das intervenções pedagógicas.
+        </p>
+
+        <div class="button">
+            Abrir Velotec Estratégias
+        </div>
+
+    </a>
+
 </section>
-</main>
-<footer>Velotec — soluções inteligentes para a educação especial.</footer>
-</body>
+
+</main><footer><span class="footer-name">Velotec</span>
+— soluções inteligentes para a educação especial.
+
+</footer></body>
 </html>
