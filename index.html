@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Velotec — Portal de ferramentas</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#ffdf87">
+<link rel="icon" type="image/png" href="./icon-192.png">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--brown:#54331f;--text:#77736f;--gold:#ffbf42;--gold2:#f4a91f;--cream:#fffaf0;--border:#ffe8ad;--green:#6e8e51}
@@ -129,5 +132,8 @@ footer{position:relative;text-align:center;padding:10px 20px 22px;color:#67482d;
   <span class="footer-bee" aria-hidden="true">🐝</span>
   <div class="sign" aria-hidden="true"><span>Planejar</span><span>Transformar</span><span>Incluir</span><span>Sempre ♥</span></div>
 </footer>
+<script>
+if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(console.warn)); }
+</script>
 </body>
 </html>
