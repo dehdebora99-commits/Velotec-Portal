@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Velotec &mdash; Portal de ferramentas
+  </title>
+  <link href="./manifest.webmanifest" rel="manifest"/>
+  <meta content="#061428" name="theme-color"/>
+  <link href="./icon-192.png" rel="icon" type="image/png"/>
+  <style>
+   /* VELOTEC PREMIUM — identidade visual; links e integração PWA preservados */
+:root {
+  color-scheme: dark;
+  --navy: #061428;
+  --navy-light: #102b49;
+  --gold: #f5c66c;
+  --gold-bright: #ffdf95;
+  --silver: #e6ebf1;
+  --muted: #c2ccda;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: var(--silver);
+  background: radial-gradient(ellipse at 50% 0%, #183858 0%, #081b32 43%, #030c1b 100%);
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(239,190,102,.08), transparent 60%);
+}
+.hero { position: relative; text-align: center; padding: 48px 20px 20px; }
+.hero::before, .hero::after {
+  content: ''; position: absolute; height: 1px; width: 24%; top: 62%;
+  background: linear-gradient(90deg, transparent, rgba(242,195,105,.65));
+}
+.hero::before { left: 2%; }
+.hero::after { right: 2%; transform: rotate(180deg); }
+.brand { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.brand-mark {
+  position: relative; width: 178px; height: 112px; display: grid; place-items: center;
+  filter: drop-shadow(0 6px 18px rgba(245,191,94,.25));
+}
+.brand-mark svg { width: 100%; height: 100%; }
+.brand h1 {
+  margin: 0; font-size: clamp(48px, 7vw, 76px); font-weight: 750;
+  line-height: 1.05; letter-spacing: -.055em;
+  background: linear-gradient(120deg, #fff 0%, #b9c5d5 35%, #f3f5f9 52%, #d2a253 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.brand-subtitle { margin: 12px 0 0; font-size: clamp(11px, 1.4vw, 15px); font-weight: 650;
+  letter-spacing: .32em; color: var(--gold); text-transform: uppercase; }
+.brand-description { max-width: 660px; margin: 18px auto 0; color: var(--muted); line-height: 1.6; font-size: 15px; }
+main { max-width: 1250px; margin: auto; padding: 18px 24px 42px; }
+.intro { text-align: center; padding: 15px 10px 29px; }
+.intro h2 { color: #f8d38a; font-size: clamp(24px, 3vw, 34px); font-weight: 650; margin: 0 0 7px; }
+.intro p { color: #c3cedb; margin: 0; font-size: 15px; }
+.grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 22px; }
+.card {
+  grid-column: span 2; min-width: 0; min-height: 330px;
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  padding: 27px 20px 22px; text-align: center; text-decoration: none; color: inherit;
+  border: 1px solid rgba(247,194,100,.74); border-radius: 19px;
+  background: linear-gradient(155deg, rgba(30,61,91,.94), rgba(8,24,45,.97) 70%);
+  box-shadow: inset 0 1px 0 rgba(255,233,180,.16), 0 10px 28px rgba(0,0,0,.32), 0 0 18px rgba(234,172,69,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card::before { content: ''; position: absolute; inset: 5px; border: 1px solid rgba(236,190,102,.13); border-radius: 14px; pointer-events: none; }
+.card:nth-child(4) { grid-column: 2 / span 2; }
+.card:nth-child(5) { grid-column: 4 / span 2; }
+.card:hover, .card:focus-visible { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,.45), 0 0 24px rgba(245,195,100,.2); }
+.card:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+.illustration { display: grid; place-items: center; height: 78px; margin-bottom: 13px; font-size: 54px; filter: drop-shadow(0 5px 9px rgba(0,0,0,.25)); }
+.card h3 { color: var(--gold-bright); font-size: clamp(19px, 2vw, 23px); margin: 0 0 13px; line-height: 1.25; }
+.card p { flex: 1; margin: 0; font-size: 14px; line-height: 1.6; color: #e0e6ef; }
+.button {
+  width: 100%; display: flex; justify-content: center; align-items: center; gap: 9px;
+  margin-top: 24px; padding: 13px 10px; border-radius: 9px;
+  color: #241b0c; background: linear-gradient(100deg, #bb8135, #ffdf91 48%, #d79a43);
+  box-shadow: 0 3px 12px rgba(246,193,91,.18); font-weight: 750; font-size: 13px;
+}
+.button span { font-size: 18px; }
+footer { position: relative; text-align: center; padding: 24px 20px 42px; color: #aebcd0; font-size: 13px; }
+footer::before { content: ''; display: block; max-width: 880px; margin: 0 auto 22px; height: 1px; background: linear-gradient(90deg, transparent, #b98d49, transparent); }
+.footer-brand { font-weight: 750; font-size: 24px; letter-spacing: -.04em; color: #f4d08d; margin-bottom: 5px; }
+@media (max-width: 850px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .card, .card:nth-child(4), .card:nth-child(5) { grid-column: auto; }
+  .hero::before, .hero::after { display: none; }
+}
+@media (max-width: 560px) {
+  .hero { padding: 30px 16px 12px; }
+  .brand-mark { width: 148px; height: 96px; }
+  .brand-subtitle { letter-spacing: .19em; }
+  .brand-description { font-size: 13px; }
+  main { padding: 12px 15px 30px; }
+  .intro { padding: 15px 4px 23px; }
+  .grid { grid-template-columns: 1fr; gap: 15px; }
+  .card, .card:nth-child(4), .card:nth-child(5) { grid-column: 1; min-height: 290px; padding: 22px 20px; }
+  .illustration { height: 62px; font-size: 45px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
+  </style>
+ </head>
+ <body>
+  <header class="hero">
+   <div class="brand">
+    <div aria-hidden="true" class="brand-mark">
+     <svg viewBox="0 0 340 205" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="V metálico dourado com símbolo de pesquisa e ramos dourados">
+        <defs>
+          <linearGradient id="goldVelotec" x1="0" y1="0" x2="1" y2=".9">
+            <stop offset="0" stop-color="#fff5c0"/>
+            <stop offset=".20" stop-color="#e4a72c"/>
+            <stop offset=".43" stop-color="#fff0a1"/>
+            <stop offset=".65" stop-color="#b97713"/>
+            <stop offset=".82" stop-color="#f9d46c"/>
+            <stop offset="1" stop-color="#9e6211"/>
+          </linearGradient>
+          <linearGradient id="goldEdge" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff9d8"/>
+            <stop offset=".5" stop-color="#e4a62a"/>
+            <stop offset="1" stop-color="#b67718"/>
+          </linearGradient>
+          <filter id="logoSoftShadow" x="-35%" y="-35%" width="170%" height="180%">
+            <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#001329" flood-opacity=".55"/>
+          </filter>
+        </defs>
+        <g filter="url(#logoSoftShadow)">
+          <!-- Elegant metallic V, shaped rather than pasted -->
+          <path d="M89 24 H142 L171 111 L203 24 H251 L190 178 H153 Z"
+                fill="url(#goldVelotec)" stroke="url(#goldEdge)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M99 31 H134 L170 138 L211 31 H238"
+                fill="none" stroke="#fff4bf" stroke-width="2" opacity=".65"/>
+          <path d="M158 165 L188 165" stroke="#8d590f" stroke-width="1.6" opacity=".5"/>
+          <!-- Conhecimento: lupa e estrela do saber -->
+          <g transform="translate(217 57)" stroke="url(#goldEdge)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="20" cy="22" r="19"/>
+            <path d="M34 37 L56 60" stroke-width="6"/>
+            <path d="M20 10 L23 18 L31 21 L23 24 L20 32 L17 24 L9 21 L17 18Z" fill="url(#goldVelotec)" stroke-width="1"/>
+          </g>
+          <!-- Symmetrical gold sprigs with individual leaves -->
+          <g fill="url(#goldVelotec)" stroke="#e8b34c" stroke-width=".65">
+            <path d="M74 145 Q41 112 48 52" fill="none" stroke="url(#goldEdge)" stroke-width="2.3"/>
+            <path d="M266 145 Q299 112 292 52" fill="none" stroke="url(#goldEdge)" stroke-width="2.3"/>
+            <path d="M52 68 Q34 60 37 47 Q50 52 52 68Z M49 84 Q29 79 29 66 Q43 70 49 84Z M51 102 Q31 102 26 89 Q43 90 51 102Z M57 120 Q38 125 31 114 Q46 110 57 120Z M66 136 Q48 145 40 136 Q53 126 66 136Z"/>
+            <path d="M48 68 Q63 57 62 44 Q49 49 48 68Z M47 87 Q64 77 66 63 Q51 68 47 87Z M50 105 Q68 98 73 84 Q57 88 50 105Z M58 122 Q77 119 82 106 Q66 108 58 122Z"/>
+            <path d="M288 68 Q306 60 303 47 Q290 52 288 68Z M291 84 Q311 79 311 66 Q297 70 291 84Z M289 102 Q309 102 314 89 Q297 90 289 102Z M283 120 Q302 125 309 114 Q294 110 283 120Z M274 136 Q292 145 300 136 Q287 126 274 136Z"/>
+            <path d="M292 68 Q277 57 278 44 Q291 49 292 68Z M293 87 Q276 77 274 63 Q289 68 293 87Z M290 105 Q272 98 267 84 Q283 88 290 105Z M282 122 Q263 119 258 106 Q274 108 282 122Z"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <h1>
+     Velotec
+    </h1>
+    <p class="brand-subtitle">
+     Solu&ccedil;&otilde;es Educacionais
+    </p>
+   </div>
+   <p class="brand-description">
+    Tecnologia inteligente para apoiar o trabalho pedag&oacute;gico com mais organiza&ccedil;&atilde;o, conhecimento e praticidade.
+   </p>
+  </header>
+  <main>
+   <section class="intro">
+    <h2>
+     Portal de ferramentas
+    </h2>
+    <p>
+     Escolha uma das solu&ccedil;&otilde;es abaixo para come&ccedil;ar.
+    </p>
+   </section>
+   <section class="grid">
+    <a class="card" href="https://dehdebora99-commits.github.io/Velotec-Relatorios/">
+     <div aria-hidden="true" class="illustration">
+      <span>
+       📋
+      </span>
+     </div>
+     <h3>
+      Relat&oacute;rios Pedag&oacute;gicos
+     </h3>
+     <p>
+      Gere relat&oacute;rios com escrita profissional, humanizada e organizada, facilitando o registro e a documenta&ccedil;&atilde;o do trabalho pedag&oacute;gico.
+     </p>
+     <div class="button">
+      Abrir Velotec Relat&oacute;rios
+      <span>
+       &rarr;
+      </span>
+     </div>
+    </a>
+    <a class="card" href="https://dehdebora99-commits.github.io/Velotec-Estrategias/">
+     <div aria-hidden="true" class="illustration">
+      <span>
+       💡
+      </span>
+     </div>
+     <h3>
+      Estrat&eacute;gias Pedag&oacute;gicas
+     </h3>
+     <p>
+      Crie estrat&eacute;gias pedag&oacute;gicas personalizadas e planejamentos detalhados, considerando as caracter&iacute;sticas e necessidades do educando.
+     </p>
+     <div class="button">
+      Abrir Velotec Estrat&eacute;gias
+      <span>
+       &rarr;
+      </span>
+     </div>
+    </a>
+    <a class="card" href="https://dehdebora99-commits.github.io/Velotec-Conhecimento/">
+     <div aria-hidden="true" class="illustration">
+      <span>
+       🧠
+      </span>
+     </div>
+     <h3>
+      Velotec Conhecimento
+     </h3>
+     <p>
+      Consulte c&oacute;digos CID, pesquise informa&ccedil;&otilde;es sobre defici&ecirc;ncias, s&iacute;ndromes e transtornos e acesse informa&ccedil;&otilde;es importantes sobre medicamentos.
+     </p>
+     <div class="button">
+      Abrir Velotec Conhecimento
+      <span>
+       &rarr;
+      </span>
+     </div>
+    </a>
+    <a class="card" href="https://dehdebora99-commits.github.io/Velotec-Materiais/">
+     <div aria-hidden="true" class="illustration">
+      <span>
+       📚
+      </span>
+     </div>
+     <h3>
+      Velotec Materiais
+     </h3>
+     <p>
+      Acesse materiais pedag&oacute;gicos em PDF organizados para consulta e download.
+     </p>
+     <div class="button">
+      Abrir Velotec Materiais
+      <span>
+       &rarr;
+      </span>
+     </div>
+    </a>
+    <a class="card" href="https://dehdebora99-commits.github.io/Velotec-Portage-Porcentagem/">
+     <div aria-hidden="true" class="illustration">
+      <span>
+       📊
+      </span>
+     </div>
+     <h3>
+      Velotec Portage
+     </h3>
+     <p>
+      Avalie objetivos do Invent&aacute;rio Portage por &aacute;rea e faixa et&aacute;ria, marque os objetivos realizados e obtenha os percentuais automaticamente.
+     </p>
+     <div class="button">
+      Abrir Velotec Portage
+      <span>
+       &rarr;
+      </span>
+     </div>
+    </a>
+   </section>
+  </main>
+  <footer>
+   <div class="footer-brand">
+    Velotec
+   </div>
+   <div>
+    Solu&ccedil;&otilde;es inteligentes para a educa&ccedil;&atilde;o especial.
+   </div>
+  </footer>
+  <script>
+   if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(console.warn)); }
+  </script>
+ </body>
+</html>
